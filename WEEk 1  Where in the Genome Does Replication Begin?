@@ -1,0 +1,194 @@
+ori= "ATCAATGATCAACGTAAGCTTCTAAGCATGATCAAGGTGCTCACACAGTTTATCCACAACCTGAGTGGATGACATCAAGATAGGTCGTTGTATCTCCTTCCTCTCGTACTCTCATGACCACGGAAAGATGATCAAGAGAGGATGATTTCTTGGCCATATCGCAATGAATACTTGTGACTTGTGCTTCCAATTGACATCTTCAGCGCCATATTGCGCTGGCCAAGGTGACGGAGCGGGATTACGAAAGCATGATCATGGCTGTTGTTCTGTTTATCTTGTTTTGACTGAGACTTGTTAGGATAGACGGTTTTTCATCACTGACTAGCCAAAGCCTTACTCTGCCTGACATCGACCGTAAATTGATAATGAATTTACATGCTTCCGCGACGATTTACCTCTTGATCATCGATCCGATTGAAGATCTTCAATTGTTAATTCTCTTGCCTCGACTCATAGCCATGATGAGCTCTTGATCATGTTTCCTTAACCCTCTATTTTTTACGGAAGAATGATCAAGCTGCTGCTCTTGATCATCGTTTC"
+print (len(ori))
+
+-----
+
+def PatternCount(Text, Pattern):
+
+count = 0 for i in range(len(Text)-len(Pattern)+1):
+
+if Text[i:i+len(Pattern)] == Pattern:
+
+count = count+1
+
+return count
+
+-------
+
+def PatternCount(Text, Pattern):
+    count = 0
+    for i in range(len(Text)-len(Pattern)+1):
+        if Text[i:i+len(Pattern)] == Pattern:
+            count = count+1
+    return count
+
+# Now, set Text equal to the ori of Vibrio cholerae and Pattern equal to "TGATCA"
+Text = "ATCAATGATCAACGTAAGCTTCTAAGCATGATCAAGGTGCTCACACAGTTTATCCACAACCTGAGTGGATGACATCAAGATAGGTCGTTGTATCTCCTTCCTCTCGTACTCTCATGACCACGGAAAGATGATCAAGAGAGGATGATTTCTTGGCCATATCGCAATGAATACTTGTGACTTGTGCTTCCAATTGACATCTTCAGCGCCATATTGCGCTGGCCAAGGTGACGGAGCGGGATTACGAAAGCATGATCATGGCTGTTGTTCTGTTTATCTTGTTTTGACTGAGACTTGTTAGGATAGACGGTTTTTCATCACTGACTAGCCAAAGCCTTACTCTGCCTGACATCGACCGTAAATTGATAATGAATTTACATGCTTCCGCGACGATTTACCTCTTGATCATCGATCCGATTGAAGATCTTCAATTGTTAATTCTCTTGCCTCGACTCATAGCCATGATGAGCTCTTGATCATGTTTCCTTAACCCTCTATTTTTTACGGAAGAATGATCAAGCTGCTGCTCTTGATCATCGTTTC"
+Pattern = "TGATCA"
+
+# Finally, print the result of calling PatternCount on Text and Pattern.
+# Don't forget to use the notation print() with parentheses included!
+
+print (PatternCount(Text, Pattern))
+
+--------
+
+freq = {}
+    n = len(Text)
+    for i in range(n-k+1):
+        Pattern = Text[i:i+k]
+        if (bool(freq.get(Pattern))):
+            freq[Pattern] += 1
+        else:
+            freq[Pattern] = 1;
+    return freq
+
+--------
+
+def FrequentWords(Text, k):
+    words = []
+    freq = FrequencyMap(Text, k)
+    m = max(freq.values())
+    for key in freq:
+        if freq[key] == m:
+            pattern = key
+            words.append(pattern)
+    return words
+
+def FrequencyMap(Text, k):
+    freq = {}
+    n = len(Text)
+    for i in range(n-k+1):
+        Pattern = Text[i:i+k]
+        freq[Pattern] = 0
+        for j in range(n-k+1):
+            if Pattern == Text[j:j+k]:
+                freq[Pattern] += 1
+    return freq
+
+--------
+
+def FrequentWords(Text, k):
+    # your code here
+    words = []
+    freq = FrequencyMap(Text, k)
+    m = max(freq.values())
+    for key in freq:
+        if freq[key]==m:
+            words.append(key)
+    return words
+# Copy your FrequencyMap() function here.
+def FrequencyMap(Text, k):
+    # your code here.
+    freq = {}
+    n = len(Text)
+    for i in range(n-k+1):
+        Pattern = Text[i:i+k]
+        freq[Pattern] = 0
+    # hint: your code goes here!
+        for j in range(n-k+1):
+            if Text[j:j+k]==Pattern:
+                freq[Pattern]=freq[Pattern]+1
+    return freq
+
+# Now set Text equal to the Vibrio cholerae oriC and k equal to 10
+Text='ATCAATGATCAACGTAAGCTTCTAAGCATGATCAAGGTGCTCACACAGTTTATCCACAACCTGAGTGGATGACATCAAGATAGGTCGTTGTATCTCCTTCCTCTCGTACTCTCATGACCACGGAAAGATGATCAAGAGAGGATGATTTCTTGGCCATATCGCAATGAATACTTGTGACTTGTGCTTCCAATTGACATCTTCAGCGCCATATTGCGCTGGCCAAGGTGACGGAGCGGGATTACGAAAGCATGATCATGGCTGTTGTTCTGTTTATCTTGTTTTGACTGAGACTTGTTAGGATAGACGGTTTTTCATCACTGACTAGCCAAAGCCTTACTCTGCCTGACATCGACCGTAAATTGATAATGAATTTACATGCTTCCGCGACGATTTACCTCTTGATCATCGATCCGATTGAAGATCTTCAATTGTTAATTCTCTTGCCTCGACTCATAGCCATGATGAGCTCTTGATCATGTTTCCTTAACCCTCTATTTTTTACGGAAGAATGATCAAGCTGCTGCTCTTGATCATCGTTTC'
+k=10
+# Finally, print the result of calling FrequentWords on Text and k.
+print(FrequentWords(Text, k))
+
+------
+
+reverse = ""  #make reverse a string instead a list
+    a = len(Pattern) - 1  #define 'a' as the last character of Pattern
+    for i in range(len(Pattern)): 
+        base = Pattern[i] #index of each character
+        reverse = str(base) + reverse
+        i -= 1 #loop 
+    return reverse
+
+----------
+
+basepairs = {"A":"T", "G":"C", "T":"A", "C":"G"}
+    complement = ""
+    for base in Pattern:
+        complement += basepairs.get(base)
+    return complement
+
+-----------
+
+def ReverseComplement(Pattern):   
+    return Complement(Reverse(Pattern))
+
+# Copy your Reverse() function here.
+def Reverse(Pattern):
+    # your code here
+    return Pattern[::-1]
+
+# Copy your Complement() function here.
+def Complement(Pattern):
+    # your code here
+    dict = {'A':'T','G':'C','T':'A','C':'G'}
+    return "".join(dict[i] for i in Pattern)
+
+----------
+
+def PatternMatching(Pattern, Genome):
+    positions = []      # output variable
+    n = len(Genome)
+    k = len(Pattern)
+    for i in range(n-k+1):
+        if Genome[i:i+k] == Pattern:
+            positions.append(i)
+    return positions
+
+=--------
+
+def PatternMatching (Pattern,Genome):
+    positions = [] # output variable
+    Gen= len(Genome)
+    Pat= len(Pattern)
+    # your code here
+    for occurrence in range (Gen - Pat +1):
+        if Pattern == Genome [occurrence : occurrence + Pat] :
+            positions.append(occurrence)
+    return positions
+# The following lines will automatically read in the Vibrio cholerae genome for you and store it in a variable named v_cholerae
+import sys                              # needed to read the genome
+input = sys.stdin.read().splitlines()   #
+v_cholerae = input[1]                   # store the genome as 'v_cholerae'
+
+
+# Call PatternMatching with Pattern equal to "CTTGATCAT" and Genome equal to v_cholerae,
+# and store the output as a variable called positions
+positions= PatternMatching ("CTTGATCAT",v_cholerae) # we put the input data here
+
+
+# print the positions variable
+print (positions)
+
+---------------
+
+def PatternCount(Text, Pattern):
+    count = 0
+    for i in range(len(Text)-len(Pattern)+1):
+        if Text[i:i+len(Pattern)] == Pattern:
+            count = count+1
+    return count
+
+# On the following line, create a variable called Text that is equal to the oriC region from T petrophila
+Text = "AACTCTATACCTCCTTTTTGTCGAATTTGTGTGATTTATAGAGAAAATCTTATTAACTGAAACTAAAATGGTAGGTTTGGTGGTAGGTTTTGTGTACATTTTGTAGTATCTGATTTTTAATTACATACCGTATATTGTATTAAATTGACGAACAATTGCATGGAATTGAATATATGCAAAACAAACCTACCACCAAACTCTGTATTGACCATTTTAGGACAACTTCAGGGTGGTAGGTTTCTGAAGCTCTCATCAATAGACTATTTTAGTCTTTACAAACAATATTACCGTTCAGATTCAAGATTCTACAACGCTGTTTTAATGGGCGTTGCAGAAAACTTACCACCTAAAATCCAGTATCCAAGCCGATTTCAGAGAAACCTACCACTTACCTACCACTTACCTACCACCCGGGTGGTAAGTTGCAGACATTATTAAAAACCTCATCAGAAGCTTGTTCAAAAATTTCAATACTCGAAACCTACCACCTGCGTCCCCTATTATTTACTACTACTAATAATAGCAGTATAATTGATCTGA"
+
+# On the following line, create a variable called count_1 that is equal to the number of times
+# that "ATGATCAAG" occurs in Text.
+count_1 = PatternCount(Text, "ATGATCAAG")
+
+# On the following line, create a variable called count_2 that is equal to the number of times
+# that "CTTGATCAT" occurs in Text.
+count_2 = PatternCount(Text, "CTTGATCAT")
+
+
+# Finally, print the sum of count_1 and count_2
+print (count_1 + count_2)
+
+---------------
